@@ -39,19 +39,34 @@
         </button>
       </div>
 
-      <form class="hidden h-9 w-2/5 items-center border md:flex">
+      <form class="hidden h-9 w-2/5 items-center border md:flex" id="searchForm">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="mx-3 h-4 w-4">
           <path stroke-linecap="round" stroke-linejoin="round"
             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
         </svg>
-
-        <input class="hidden w-11/12 outline-none md:block" type="search" placeholder="Search" />
-
-        <button class="ml-auto h-full bg-red-600 px-4 hover:red-100">
+      
+        <input class="hidden w-11/12 outline-none md:block" type="search" id="searchInput" placeholder="Search" />
+      
+        <button class="ml-auto h-full bg-red-600 px-4 hover:red-100" type="submit">
           Search
         </button>
       </form>
+      
+      <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // ป้องกันการรีเฟรชหน้า
+      
+          const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      
+          if (searchTerm === 'hirono' || searchTerm === 'molly') {
+            window.location.href = 'catalog.html'; // นำทางไปยังหน้า catalog
+          } else {
+            alert('No results found'); // แสดงข้อความว่าค้นหาไม่พบ
+          }
+        });
+      </script>
+      
       <div class="flex gap-3 items-center">
         <a href="cart.html" class="flex cursor-pointer flex-col items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
@@ -247,7 +262,7 @@
                 <img class="w-full h-full object-cover brightness-75 duration-300 hover:brightness-100"
                     src="https://global-static.popmart.com/globalAdmin/1726751605618____%E6%8E%A8%E8%8D%90%E4%BD%8Dpc_m2_zsiga%E6%88%91%E4%BB%AC%E5%A6%82%E6%AD%A4%E5%8F%AF%E7%88%B1____.jpg?x-oss-process=image/format,webp"
                     alt="Zsiga We're So Cute Series Figures" />
-                <div class="absolute bottom-ภ left-5 text-white">
+                <div class="absolute bottom-5 left-5 text-white">
                     <h3 class="font-bold">We're So Cute Series</h3>
                 </div>
             </div>
