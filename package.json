@@ -13,7 +13,7 @@
   "browserslist": "last 2 versions",
   "targets": {
     "default": {
-      "distDir": "./build/"
+      "distDir": "./dist/"
     }
   },
   "keywords": [
