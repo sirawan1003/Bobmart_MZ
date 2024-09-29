@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
+    <link rel="icon" type="image/jpg" sizes="16x16" href="/logoweb.jpg" />
+    <link rel="icon" type="image/jpg" sizes="32x32" href="/logoweb.jpg" />
+    <title>Cart</title>
+    <style>
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #d2001f;
+        }
+
+        .nav-bar a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .nav-bar .home {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Nav Bar -->
+    <div class="nav-bar">
+        <div class="home">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home Icon" width="20">
+            <a href="index.html">Home</a>
+        </div>
+        <a href="catalog.html">Catalog</a>
+    </div>
+
+    <!-- Cart and Summary -->
+    <main class="container mx-auto py-10 flex justify-between">
+        <!-- Cart Table -->
+        <section class="w-3/4">
+            <table class="table-auto w-full bg-white border border-gray-200">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="p-4 text-left">ITEM</th>
+                        <th class="p-4 text-left">PRICE</th>
+                        <th class="p-4 text-left">QUANTITY</th>
+                        <th class="p-4 text-left">TOTAL</th>
+                        <th class="p-4"></th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- รายการสินค้าจะถูกใส่ที่นี่โดยใช้ JavaScript -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Order Summary -->
+        <section class="w-1/4">
+            <div class="bg-white border border-gray-200 shadow-lg p-4">
+                <h2 class="font-bold text-lg mb-4">ORDER SUMMARY</h2>
+                <div class="flex justify-between border-b py-4">
+                    <p>Subtotal</p>
+                    <p id="subtotal">$0</p>
+                </div>
+                <div class="flex justify-between border-b py-4">
+                    <p>Shipping</p>
+                    <p>Free</p>
+                </div>
+                <div class="flex justify-between py-4">
+                    <p>Total</p>
+                    <p id="total">$0</p>
+                </div>
+                <button id="checkout-btn" class="w-full bg-purple-600 hover:bg-red-600 text-white py-2 mt-4">Proceed to
+                    checkout</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Load Cart Items from Local Storage
+        function loadCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+            let subtotal = 0;
+
+            cartItemsContainer.innerHTML = ''; // Clear the current items
+
+            cartData.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                const row = document.createElement('tr');
+                row.classList.add('border-b');
+                row.dataset.price = item.price;
+                row.innerHTML = `
+                    <td class="p-4 flex items-center">
+                        <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover mr-4">
+                        <div>
+                            <p class="font-bold text-lg">${item.name}</p>
+                            <p class="text-gray-500 text-sm">Size: ${item.size}</p>
+                        </div>
+                    </td>
+                    <td class="p-4">$${item.price}</td>
+                    <td class="p-4 flex items-center">
+                        <button class="px-2 py-1 border border-gray-400" onclick="updateQuantity(${index}, -1)">-</button>
+                        <input type="text" value="${item.quantity}" class="w-8 text-center mx-2 border border-gray-400" readonly>
+                        <button class="px-2 py-1 border border-gray-400" onclick="updateQuantity(${index}, 1)">+</button>
+                    </td>
+                    <td class="p-4 item-total">$${itemTotal.toFixed(2)}</td>
+                    <td class="p-4">
+                        <button class="text-red-600" onclick="removeItem(${index})">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
+                                <path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 006 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 10.23 1.482l.149-.022.841 10.518A2.75 2.75 0 007.596 19h4.807a2.75 2.75 0 002.742-2.53l.841-10.52.149.023a.75.75 0 00.23-1.482A41.03 41.03 0 0014 4.193V3.75A2.75 2.75 0 0011.25 1h-2.5zM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4zM8.58 7.72a.75.75 0 00-1.5.06l.3 7.5a.75.75 0 101.5-.06l-.3-7.5zm4.34.06a.75.75 0 10-1.5-.06l-.3 7.5a.75.75 0 101.5.06l-.3-7.5z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </td>
+                `;
+                cartItemsContainer.appendChild(row);
+            });
+
+            updateSummary(subtotal);
+        }
+
+        // Update Quantity of an Item
+        function updateQuantity(index, change) {
+            const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+            cartData[index].quantity += change;
+            if (cartData[index].quantity < 1) cartData[index].quantity = 1; // Minimum quantity is 1
+            localStorage.setItem('cart', JSON.stringify(cartData));
+            loadCartItems();
+        }
+
+        // Remove an Item from Cart
+        function removeItem(index) {
+            let cartData = JSON.parse(localStorage.getItem('cart')) || [];
+            cartData.splice(index, 1); // Remove the item at index
+            localStorage.setItem('cart', JSON.stringify(cartData));
+            loadCartItems();
+        }
+
+        // Update Order Summary
+        function updateSummary(subtotal) {
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
+        }
+
+        // เมื่อกดปุ่ม Proceed to checkout จะนำไปยังหน้าชำระเงิน
+        document.getElementById('checkout-btn').addEventListener('click', function () {
+            window.location.href = 'payment.html';
+        });
+
+        // Initialize Cart
+        document.addEventListener('DOMContentLoaded', loadCartItems);
+    </script>
+</body>
+
+</html>

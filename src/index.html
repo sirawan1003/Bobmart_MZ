@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="assets/css/tailwind-ecommerce.css" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/jpg" sizes="16x16" href="/logoweb.jpg" />
+  <link rel="icon" type="image/jpg" sizes="32x32" href="/logoweb.jpg" />
+
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#207891" />
+  <meta name="msapplication-TileColor" content="#ffc40d" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <title>MayBell - Online furniture store</title>
+
+  <!-- Splide CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css" />
+</head>
+
+<body x-data="{ desktopMenuOpen: false, mobileMenuOpen: false}">
+  <!-- Header -->
+  <div>
+    <header class="mx-auto w-full flex h-16 max-w-[1200px] items-center justify-between px-5">
+      <a href="index.html">
+        <img class="h-12 w-auto sm:h-14 md:h-16 lg:h-20 xl:h-24 max-w-full object-contain"
+          src="./assets/images/logobob.png" alt="BOB-MART logo" />
+      </a>
+
+      <div class="md:hidden">
+        <button @click="mobileMenuOpen = ! mobileMenuOpen">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="h-8 w-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+
+      <form class="hidden h-9 w-2/5 items-center border md:flex">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="mx-3 h-4 w-4">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+
+        <input class="hidden w-11/12 outline-none md:block" type="search" placeholder="Search" />
+
+        <button class="ml-auto h-full bg-red-600 px-4 hover:red-100">
+          Search
+        </button>
+      </form>
+      <div class="flex gap-3 items-center">
+        <a href="cart.html" class="flex cursor-pointer flex-col items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
+            <path fill-rule="evenodd"
+              d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z"
+              clip-rule="evenodd" />
+          </svg>
+          <p class="text-xs">Cart</p>
+        </a>
+
+        <a href="account-page.html" class="relative flex cursor-pointer flex-col items-center justify-center">
+          <span class="absolute bottom-[33px] right-1 flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+          </svg>
+          <p class="text-xs">Account</p>
+        </a>
+      </div>
+
+  </div>
+  </header>
+  </div>
+  <!-- Nav bar -->
+  <nav class="relative bg-red-600">
+    <div class="mx-auto hidden h-12 w-full max-w-[1200px] items-center md:flex">
+      <div class="mx-7 flex gap-8">
+        <a class="font-light text-white duration-100 hover:text-red-950 hover:underline" href="index.html">Home</a>
+        <a class="font-light text-white duration-100 hover:text-red-950 hover:underline" href="catalog.html">Catalog</a>
+        <a class="font-light text-white duration-100 hover:text-red-950 hover:underline" href="contact-us.html">Contact
+          Us</a>
+      </div>
+
+      <div class="ml-auto flex gap-4 px-5">
+        <a class="font-light text-white duration-100 hover:text-red-950 hover:underline" href="login.html">Login</a>
+        <span class="text-white">&#124;</span>
+        <a class="font-light text-white duration-100 hover:text-red-950 hover:underline" href="sign-up.html">Sign
+          Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="splide mx-auto max-w-[1200px] px-5 py-2" aria-label="Image Slider">
+    <div class="splide__track">
+      <ul class="splide__list mx-auto max-w-[1200px]">
+        <!-- Slide 1 -->
+        <li class="splide__slide">
+          <img
+            src="https://global-static.popmart.com/globalAdmin/1723101669599____pc%E6%96%B0%E5%93%81720_300____.jpg?x-oss-process=image/format,webp"
+            alt="Slider Image 1" />
+        </li>
+        <!-- Slide 2 -->
+        <li class="splide__slide">
+          <img
+            src="https://global-static.popmart.com/globalAdmin/1727185347804____popnow_%E6%98%9F%E7%90%83%E5%A4%A7%E6%88%98%E6%9B%BC%E8%BE%BE%E6%B4%9B%E4%BA%BA%E7%B3%BB%E5%88%97%E6%89%8B%E5%8A%9E____.jpg?x-oss-process=image/format,webp"
+            alt="Slider Image 2" />
+        </li>
+        <!-- Slide 3 -->
+        <li class="splide__slide">
+          <img
+            src="https://global-static.popmart.com/globalAdmin/1726797302419____%E8%8F%9C%E5%8D%95%E6%A0%8F_720x300_%E4%B8%87%E5%9C%A3%E9%A2%84%E7%83%AD%E7%AC%AC%E4%BA%8C%E6%B3%A2____.jpg?x-oss-process=image/format,webp"
+            alt="Slider Image 3" />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <style>
+    .splide__slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      /* Adjust this value to set the desired height */
+    }
+
+    .splide__slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      new Splide('.splide', {
+        type: 'loop',
+        perPage: 1,
+        autoplay: true,
+        interval: 3000,
+        arrows: true,
+        pagination: true,
+      }).mount();
+    });
+  </script>
+
+
+  <!-- SHOP BY CATEGORY -->
+  <h2 class="mx-auto mb-5 max-w-[1200px] px-5">SHOP BY CATEGORY</h2>
+
+  <section class="mx-auto grid max-w-[1200px] grid-cols-3 px-5 lg:gap-5">
+    <!-- Figurines -->
+    <a href="#">
+      <div class="relative cursor-pointer">
+        <img class="mx-auto h-auto w-auto brightness-50 duration-300 hover:brightness-100"
+          src="https://prod-america-res.popmart.com/default/01_AuTcQjC4kr_1200x1200.jpg" alt="Figurines image" />
+        <p
+          class="pointer-events-none absolute top-1/2 left-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-xl">
+          Figurines
+        </p>
+      </div>
+    </a>
+
+    <!-- Plush Toys -->
+    <a href="#">
+      <div class="relative cursor-pointer">
+        <img class="mx-auto h-auto w-auto brightness-50 duration-300 hover:brightness-100"
+          src="https://prod-america-res.popmart.com/default/20231023_170407_078508__1200x1200.jpg"
+          alt="Plush Toys image" />
+        <p
+          class="pointer-events-none absolute top-1/2 left-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-xl">
+          Plush Toys
+        </p>
+      </div>
+    </a>
+
+    <!-- Accessories ALL -->
+    <a href="#">
+      <div class="relative cursor-pointer">
+        <img class="mx-auto h-auto w-auto brightness-50 duration-300 hover:brightness-100"
+          src="https://prod-america-res.popmart.com/default/20240627_102455_804778____molly-anniversary-statues-classical-retro-2-series-picture-frame-cup-accessories-pop-mart-us-1_____1200x1200.jpg"
+          alt="Accessories ALL image" />
+        <p
+          class="pointer-events-none absolute top-1/2 left-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-xl">
+          Accessories ALL
+        </p>
+      </div>
+    </a>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      new Splide('.splide', {
+        type: 'loop',
+        autoplay: true,
+        arrows: true,
+        interval: 3000,
+        pauseOnHover: false,
+      }).mount();
+    });
+  </script>
+
+
+  <!-- TOP ZSIGA COLLECTIONS -->
+  <h2 class="mx-auto my-10 max-w-[1200px] px-5 text-2xl font-bold text-center">TOP ZSIGA COLLECTIONS</h2>
+
+  <section class="mx-auto grid max-w-[1200px] grid-cols-2 gap-0 px-5 md:grid-cols-2">
+    <!-- รูปใหญ่ทางซ้าย -->
+    <a href="#" class="row-span-2">
+      <div class="relative cursor-pointer">
+        <img class="w-full h-300 object-cover brightness-75 duration-300 hover:brightness-100"
+          src="https://global-static.popmart.com/globalAdmin/1726751515924____%E6%8E%A8%E8%8D%90%E4%BD%8Dpc_l_zsiga%E5%A4%A7%E4%BA%BA%E7%B3%BB%E5%88%97____.jpg?x-oss-process=image/format,webp"
+          alt="Zsiga We All Are Kids Series Figures" />
+        <div class="absolute bottom-8 left-5 text-white">
+          <h3 class="font-bold">We All Are Kids Series</h3>
+        </div>
+      </div>
+    </a>
+
+    <div class="grid grid-cols-1 gap-0">
+      <!-- รูปทางขวาบน -->
+      <a href="#">
+        <div class="relative cursor-pointer">
+          <img class="w-full h-full object-cover brightness-75 duration-300 hover:brightness-100"
+            src="https://global-static.popmart.com/globalAdmin/1726751546095____%E6%8E%A8%E8%8D%90%E4%BD%8Dpc_m1_zsiga%E5%8F%8C%E5%AD%90%E7%B3%BB%E5%88%97____.jpg?x-oss-process=image/format,webp"
+            alt="Zsiga Twins Series Figures" />
+          <div class="absolute bottom-5 left-5 text-white">
+            <h3 class="font-bold">Twins Series</h3>
+          </div>
+        </div>
+      </a>
+
+      <!-- รูปทางขวาล่าง -->
+      <a href="#">
+        <div class="relative cursor-pointer">
+          <img class="w-full h-full object-cover brightness-75 duration-300 hover:brightness-100"
+            src="https://global-static.popmart.com/globalAdmin/1726751605618____%E6%8E%A8%E8%8D%90%E4%BD%8Dpc_m2_zsiga%E6%88%91%E4%BB%AC%E5%A6%82%E6%AD%A4%E5%8F%AF%E7%88%B1____.jpg?x-oss-process=image/format,webp"
+            alt="Zsiga We're So Cute Series Figures" />
+          <div class="absolute bottom-5 left-5 text-white">
+            <h3 class="font-bold">We're So Cute Series</h3>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+  <!-- Desktop Footer  -->
+
+  <footer class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex-row">
+    <div class="ml-5">
+  </footer>
+  <!-- /Desktop Footer  -->
+
+  <!-- Payment and copyright  -->
+
+  <section class="h-11 bg-red-600">
+    <div class="mx-auto flex max-w-[1200px] items-center justify-between px-4 pt-2">
+      <p>&copy; BobMart by mz, 2024</p>
+      <div class="flex items-center space-x-3">
+        <img class="h-8" src="https://cdn-icons-png.flaticon.com/512/5968/5968299.png" alt="Visa icon" />
+        <img class="h-8" src="https://cdn-icons-png.flaticon.com/512/349/349228.png" alt="AE icon" />
+        <img class="h-8" src="https://cdn-icons-png.flaticon.com/512/5968/5968144.png" alt="Apple pay icon" />
+      </div>
+    </div>
+  </section>
+  </main>
+  <!-- /Payment and copyright  -->
+  <script type="module" src="assets/js/script.js"></script>
+</body>
+
+</html>

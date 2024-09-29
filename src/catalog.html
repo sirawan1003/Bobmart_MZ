@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" />
+  <link rel="stylesheet" href="assets/css/tailwind-ecommerce.css" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/jpg" sizes="16x16" href="/logoweb.jpg" />
+  <link rel="icon" type="image/jpg" sizes="32x32" href="/logoweb.jpg" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#207891" />
+  <meta name="msapplication-TileColor" content="#ffc40d" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Catalog</title>
+  <style>
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #d2001f;
+    }
+
+    .nav-bar a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .nav-bar .home {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="flex flex-col min-h-screen bg-gray-100">
+    <!-- Navbar -->
+    <nav class="nav-bar">
+      <div class="home">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="Home Icon" width="20">
+        <a href="index.html">Home</a>
+      </div>
+      <a href="cart.html">Cart</a>
+    </nav>
+    <!-- /Navbar -->
+
+    <!-- Catalog Section -->
+    <section class="container mx-auto flex-grow max-w-7xl py-10 px-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Product Card 1 -->
+        <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg cursor-pointer" onclick="openModal('modal1')">
+          <img src="https://prod-thailand-res.popmart.com/default/20240716_161509_130244____1_____1200x1200.jpg"
+            alt="Molly Trolls Poppy Figurine" class="w-full h-64 object-contain mb-4">
+          <h3 class="text-lg font-semibold">Molly Trolls Poppy Figurine</h3>
+          <p class="text-red-500 font-bold">฿3200</p>
+        </div>
+        <!-- Product Card 2 -->
+        <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg cursor-pointer" onclick="openModal('modal2')">
+          <img src="https://prod-thailand-res.popmart.com/default/20240717_172142_843452____1_____1200x1200.jpg"
+            alt="MEGA SPACE MOLLY 400% TEAM COCA-COLA" class="w-full h-64 object-contain mb-4">
+          <h3 class="text-lg font-semibold">MEGA SPACE MOLLY 400% TEAM COCA-COLA</h3>
+          <p class="text-red-500 font-bold">฿6200</p>
+        </div>
+        <!-- Product Card 3 -->
+        <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg cursor-pointer" onclick="openModal('modal3')">
+          <img src="https://prod-thailand-res.popmart.com/default/20240731_171817_505119____1_____1200x1200.jpg"
+            alt="MEGA SPACE MOLLY 100% Series 3" class="w-full h-64 object-contain mb-4">
+          <h3 class="text-lg font-semibold">MEGA SPACE MOLLY 100% Series 3</h3>
+          <p class="text-red-500 font-bold">฿430</p>
+        </div>
+        <!-- Product Card 4 -->
+        <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg cursor-pointer" onclick="openModal('modal4')">
+          <img src="https://prod-thailand-res.popmart.com/default/20240717_142300_552945____1_____1200x1200.jpg"
+            alt="Hirono x Keith Haring Figure" class="w-full h-64 object-contain mb-4">
+          <h3 class="text-lg font-semibold">Hirono x Keith Haring Figure</h3>
+          <p class="text-red-500 font-bold">฿1130</p>
+        </div>
+        <!-- Product Card 5 -->
+        <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg cursor-pointer" onclick="openModal('modal5')">
+          <img src="https://prod-eurasian-res.popmart.com/default/1_mead2C7NEU_1200x1200.jpg"
+            alt="Hirono Little Mischief Series" class="w-full h-64 object-contain mb-4">
+          <h3 class="text-lg font-semibold">Hirono Little Mischief Series</h3>
+          <p class="text-red-500 font-bold">฿330</p>
+        </div>
+        <!-- Product Card 6 -->
+        <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg cursor-pointer" onclick="openModal('modal6')">
+          <img src="https://prod-thailand-res.popmart.com/default/20240715_095555_134897____1_____1200x1200.jpg"
+            alt="Hirono Shelter Series Figures" class="w-full h-64 object-contain mb-4">
+          <h3 class="text-lg font-semibold">Hirono Shelter Series Figures</h3>
+          <p class="text-red-500 font-bold">฿380</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modals -->
+    <!-- Modal for Product 1 -->
+    <div id="modal1" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center no-scrollbar"
+      onclick="closeModal('modal1')">
+      <div class="bg-white rounded-lg shadow-lg p-8 w-11/12 md:w-3/5 lg:w-1/2 relative"
+        onclick="event.stopPropagation();">
+        <button class="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+          onclick="closeModal('modal1')">✕</button>
+        <div class="flex flex-col md:flex-row items-center">
+          <img class="w-full md:w-1/2 object-contain"
+            src="https://prod-thailand-res.popmart.com/default/20240716_161509_130244____1_____1200x1200.jpg"
+            alt="Molly Trolls Poppy Figurine" />
+          <div class="mt-4 md:mt-0 md:ml-6 flex-grow">
+            <h2 class="text-2xl font-bold mb-4">Molly Trolls Poppy Figurine</h2>
+            <p class="text-lg text-red-600 mb-4">฿3200</p>
+            <div class="flex items-center mb-4">
+              <button class="p-2 border border-gray-400 rounded" onclick="decreaseQuantity('quantity1')">-</button>
+              <input type="number" id="quantity1" value="1" min="1"
+                class="w-16 p-2 border border-gray-400 text-center mx-2" />
+              <button class="p-2 border border-gray-400 rounded" onclick="increaseQuantity('quantity1')">+</button>
+            </div>
+            <button class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+              onclick="addToCart('quantity1', 'Molly Trolls Poppy Figurine', 3200, 'https://prod-thailand-res.popmart.com/default/20240716_161509_130244____1_____1200x1200.jpg', 'XL')">Add
+              to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Product 2 -->
+    <div id="modal2" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center no-scrollbar"
+      onclick="closeModal('modal2')">
+      <div class="bg-white rounded-lg shadow-lg p-8 w-11/12 md:w-3/5 lg:w-1/2 relative"
+        onclick="event.stopPropagation();">
+        <button class="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+          onclick="closeModal('modal2')">✕</button>
+        <div class="flex flex-col md:flex-row items-center">
+          <img class="w-full md:w-1/2 object-contain"
+            src="https://prod-thailand-res.popmart.com/default/20240717_172142_843452____1_____1200x1200.jpg"
+            alt="MEGA SPACE MOLLY 400% TEAM COCA-COLA" />
+          <div class="mt-4 md:mt-0 md:ml-6 flex-grow">
+            <h2 class="text-2xl font-bold mb-4">MEGA SPACE MOLLY 400% TEAM COCA-COLA</h2>
+            <p class="text-lg text-red-600 mb-4">฿6200</p>
+            <div class="flex items-center mb-4">
+              <button class="p-2 border border-gray-400 rounded" onclick="decreaseQuantity('quantity2')">-</button>
+              <input type="number" id="quantity2" value="1" min="1"
+                class="w-16 p-2 border border-gray-400 text-center mx-2" />
+              <button class="p-2 border border-gray-400 rounded" onclick="increaseQuantity('quantity2')">+</button>
+            </div>
+            <button class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+              onclick="addToCart('quantity2', 'MEGA SPACE MOLLY 400% TEAM COCA-COLA', 6200, 'https://prod-thailand-res.popmart.com/default/20240717_172142_843452____1_____1200x1200.jpg', 'L')">Add
+              to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Product 3 -->
+    <div id="modal3" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center no-scrollbar"
+      onclick="closeModal('modal3')">
+      <div class="bg-white rounded-lg shadow-lg p-8 w-11/12 md:w-3/5 lg:w-1/2 relative"
+        onclick="event.stopPropagation();">
+        <button class="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+          onclick="closeModal('modal3')">✕</button>
+        <div class="flex flex-col md:flex-row items-center">
+          <img class="w-full md:w-1/2 object-contain"
+            src="https://prod-thailand-res.popmart.com/default/20240731_171817_505119____1_____1200x1200.jpg"
+            alt="MEGA SPACE MOLLY 100% Series 3" />
+          <div class="mt-4 md:mt-0 md:ml-6 flex-grow">
+            <h2 class="text-2xl font-bold mb-4">MEGA SPACE MOLLY 100% Series 3</h2>
+            <p class="text-lg text-red-600 mb-4">฿430</p>
+            <div class="flex items-center mb-4">
+              <button class="p-2 border border-gray-400 rounded" onclick="decreaseQuantity('quantity3')">-</button>
+              <input type="number" id="quantity3" value="1" min="1"
+                class="w-16 p-2 border border-gray-400 text-center mx-2" />
+              <button class="p-2 border border-gray-400 rounded" onclick="increaseQuantity('quantity3')">+</button>
+            </div>
+            <button class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+              onclick="addToCart('quantity3', 'MEGA SPACE MOLLY 100% Series 3', 430, 'https://prod-thailand-res.popmart.com/default/20240731_171817_505119____1_____1200x1200.jpg', 'S')">Add
+              to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Product 4 -->
+    <div id="modal4" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center no-scrollbar"
+      onclick="closeModal('modal4')">
+      <div class="bg-white rounded-lg shadow-lg p-8 w-11/12 md:w-3/5 lg:w-1/2 relative"
+        onclick="event.stopPropagation();">
+        <button class="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+          onclick="closeModal('modal4')">✕</button>
+        <div class="flex flex-col md:flex-row items-center">
+          <img class="w-full md:w-1/2 object-contain"
+            src="https://prod-thailand-res.popmart.com/default/20240717_142300_552945____1_____1200x1200.jpg"
+            alt="Hirono x Keith Haring Figure" />
+          <div class="mt-4 md:mt-0 md:ml-6 flex-grow">
+            <h2 class="text-2xl font-bold mb-4">Hirono x Keith Haring Figure</h2>
+            <p class="text-lg text-red-600 mb-4">฿1130</p>
+            <div class="flex items-center mb-4">
+              <button class="p-2 border border-gray-400 rounded" onclick="decreaseQuantity('quantity4')">-</button>
+              <input type="number" id="quantity4" value="1" min="1"
+                class="w-16 p-2 border border-gray-400 text-center mx-2" />
+              <button class="p-2 border border-gray-400 rounded" onclick="increaseQuantity('quantity4')">+</button>
+            </div>
+            <button class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+              onclick="addToCart('quantity4', 'Hirono x Keith Haring Figure', 1130, 'https://prod-thailand-res.popmart.com/default/20240717_142300_552945____1_____1200x1200.jpg', 'M')">Add
+              to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Product 5 -->
+    <div id="modal5" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center no-scrollbar"
+      onclick="closeModal('modal5')">
+      <div class="bg-white rounded-lg shadow-lg p-8 w-11/12 md:w-3/5 lg:w-1/2 relative"
+        onclick="event.stopPropagation();">
+        <button class="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+          onclick="closeModal('modal5')">✕</button>
+        <div class="flex flex-col md:flex-row items-center">
+          <img class="w-full md:w-1/2 object-contain"
+            src="https://prod-eurasian-res.popmart.com/default/1_mead2C7NEU_1200x1200.jpg"
+            alt="Hirono Little Mischief Series" />
+          <div class="mt-4 md:mt-0 md:ml-6 flex-grow">
+            <h2 class="text-2xl font-bold mb-4">Hirono Little Mischief Series</h2>
+            <p class="text-lg text-red-600 mb-4">฿330</p>
+            <div class="flex items-center mb-4">
+              <button class="p-2 border border-gray-400 rounded" onclick="decreaseQuantity('quantity5')">-</button>
+              <input type="number" id="quantity5" value="1" min="1"
+                class="w-16 p-2 border border-gray-400 text-center mx-2" />
+              <button class="p-2 border border-gray-400 rounded" onclick="increaseQuantity('quantity5')">+</button>
+            </div>
+            <button class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+              onclick="addToCart('quantity5', 'Hirono Little Mischief Series', 330, 'https://prod-eurasian-res.popmart.com/default/1_mead2C7NEU_1200x1200.jpg', 'M')">Add
+              to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Product 6 -->
+    <div id="modal6" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center no-scrollbar"
+      onclick="closeModal('modal6')">
+      <div class="bg-white rounded-lg shadow-lg p-8 w-11/12 md:w-3/5 lg:w-1/2 relative"
+        onclick="event.stopPropagation();">
+        <button class="absolute top-4 right-4 text-gray-600 hover:text-gray-800"
+          onclick="closeModal('modal6')">✕</button>
+        <div class="flex flex-col md:flex-row items-center">
+          <img class="w-full md:w-1/2 object-contain"
+            src="https://prod-thailand-res.popmart.com/default/20240715_095555_134897____1_____1200x1200.jpg"
+            alt="Hirono Shelter Series Figures" />
+          <div class="mt-4 md:mt-0 md:ml-6 flex-grow">
+            <h2 class="text-2xl font-bold mb-4">Hirono Shelter Series Figures</h2>
+            <p class="text-lg text-red-600 mb-4">฿380</p>
+            <div class="flex items-center mb-4">
+              <button class="p-2 border border-gray-400 rounded" onclick="decreaseQuantity('quantity6')">-</button>
+              <input type="number" id="quantity6" value="1" min="1"
+                class="w-16 p-2 border border-gray-400 text-center mx-2" />
+              <button class="p-2 border border-gray-400 rounded" onclick="increaseQuantity('quantity6')">+</button>
+            </div>
+            <button class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600"
+              onclick="addToCart('quantity6', 'Hirono Shelter Series Figures', 380, 'https://prod-thailand-res.popmart.com/default/20240715_095555_134897____1_____1200x1200.jpg', 'S')">Add
+              to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.remove('hidden');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.add('hidden');
+    }
+
+    function increaseQuantity(inputId) {
+      const input = document.getElementById(inputId);
+      input.value = parseInt(input.value) + 1;
+    }
+
+    function decreaseQuantity(inputId) {
+      const input = document.getElementById(inputId);
+      if (parseInt(input.value) > 1) {
+        input.value = parseInt(input.value) - 1;
+      }
+    }
+
+    function addToCart(quantityId, name, price, image, size) {
+      const quantityField = document.getElementById(quantityId);
+      if (!quantityField) {
+        alert('Quantity field not found');
+        return;
+      }
+      const quantity = parseInt(quantityField.value);
+      if (isNaN(quantity) || quantity <= 0) {
+        alert('Invalid quantity');
+        return;
+      }
+      const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+      const existingItem = cartData.find(item => item.name === name);
+      if (existingItem) {
+        existingItem.quantity += quantity;
+      } else {
+        cartData.push({ name, price, image, size, quantity });
+      }
+      localStorage.setItem('cart', JSON.stringify(cartData));
+      alert('Added to cart!');
+    }
+  </script>
+  <!-- Desktop Footer  -->
+
+  <footer class="mx-auto w-full max-w-[1200px] justify-between pb-10 flex flex-col lg:flex-row">
+    <div class="ml-5">
+  </footer>
+  <!-- /Desktop Footer  -->
+
+  <!-- Payment and copyright  -->
+
+  <section class="h-11 bg-red-600">
+    <div class="mx-auto flex max-w-[1200px] items-center justify-between px-4 pt-2">
+      <p>&copy; BobMart by mz, 2024</p>
+      <div class="flex items-center space-x-3">
+        <img class="h-8" src="https://cdn-icons-png.flaticon.com/512/5968/5968299.png" alt="Visa icon" />
+        <img class="h-8" src="https://cdn-icons-png.flaticon.com/512/349/349228.png" alt="AE icon" />
+        <img class="h-8" src="https://cdn-icons-png.flaticon.com/512/5968/5968144.png" alt="Apple pay icon" />
+      </div>
+    </div>
+  </section>
+  </main>
+  <!-- /Payment and copyright  -->
+  <script type="module" src="assets/js/script.js"></script>
+</body>
+
+</html>
